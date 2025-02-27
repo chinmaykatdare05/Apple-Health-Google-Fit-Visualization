@@ -308,8 +308,9 @@ def main():
             return
 
         if data is not None and not data.empty:
-            st.write("📊 **Data Preview:**")
-            st.write(data)
+            on = st.toggle("**Data Preview**")
+            if on:
+                st.write(data)
             visualize_data(data)
         else:
             st.warning("⚠️ No valid data found in the file.")
