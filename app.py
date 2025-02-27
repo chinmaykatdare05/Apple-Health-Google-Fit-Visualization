@@ -153,7 +153,7 @@ def excel_parser(file):
 
 def visualize_data(data):
     """Handles UI for attribute selection, chart type, and plotting."""
-    st.header("📊 Apple Health Data Visualization")
+    st.header("📊 Visualization")
 
     # Time Period Selection for time series resampling
     time_period = st.radio(
@@ -189,7 +189,7 @@ def visualize_data(data):
         if time_period == "Weekly":
             resampled_data = resampled_data.resample("W").sum()
         elif time_period == "Monthly":
-            resampled_data = resampled_data.resample("M").sum()
+            resampled_data = resampled_data.resample("ME").sum()
 
         plot_data = resampled_data[attributes]
 
