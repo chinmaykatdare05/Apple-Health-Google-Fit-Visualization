@@ -1,8 +1,12 @@
 # Apple Health & Google Fit Data Analytics and Visualization
 
----
-
 This project provides a streamlined way to analyze and visualize health data exported from **Apple Health** and **Google Fit**. It parses XML data exported from Apple Health, extracts key health metrics, and generates insightful visualizations using **Streamlit**, **Plotly**, **Seaborn**, and **Matplotlib**.
+
+## Deployment
+
+You can access the deployed Streamlit app using the following link:
+
+[Apple Health & Google Fit Data Analytics and Visualization](https://chinmaykatdare05-apple-health-google-fit-data-analyt-app-k7gdvs.streamlit.app/)
 
 ## Key Features
 
@@ -15,8 +19,6 @@ This project provides a streamlined way to analyze and visualize health data exp
 - **Interactive Visualizations:**
   - Various plots, including histograms, scatterplots, heatmaps, bar plots, and more.
   - Dynamic chart selection using **Streamlit** UI.
-
----
 
 ## Getting the Input Files
 
@@ -36,8 +38,6 @@ This project provides a streamlined way to analyze and visualize health data exp
 4. Click **Create Export** and download the ZIP file.
 5. Extract the ZIP and locate the **CSV files** containing your health data.
 
----
-
 ## Installation & Setup
 
 ### Prerequisites
@@ -55,8 +55,6 @@ pip install -r requirements.txt
 ```bash
 streamlit run app.py
 ```
-
----
 
 ## Usage Guide
 
@@ -83,16 +81,12 @@ streamlit run app.py
 - The app dynamically generates **interactive** visualizations.
 - Helps users **track health trends**, identify patterns, and make informed decisions.
 
----
-
 ## Future Enhancements
 
 - Support for **Google Fit CSV Parsing**.
 - Advanced AI-driven **health insights**.
 - Time-based analysis for deeper trend detection.
 - Integration with **real-time APIs** for live tracking.
-
----
 
 ## Disclaimer
 
