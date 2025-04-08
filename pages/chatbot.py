@@ -4,8 +4,7 @@ from typing import List, Generator, Tuple
 import numpy as np
 import pandas as pd
 from pandasai import Agent
-
-# from pandasai.llm.openai import OpenAI
+from pandasai.llm.openai import OpenAI
 
 # Set page configuration
 st.set_page_config(
@@ -22,6 +21,21 @@ st.logo(
 )
 
 
+def response_generator(response: str) -> Generator[str, None, None]:
+    """
+    Generator that yields one word at a time from the response, emulating a streaming effect.
+
+    Parameters:
+        response (str): The full response string.
+
+    Yields:
+        str: The next word in the response, followed by a space.
+    """
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
+
+
 # Main Streamlit App
 st.title("Vitalize Chatbot")
 
@@ -35,8 +49,8 @@ else:
             st.warning("Please enter your OpenAI API key to proceed.")
             st.stop()
         try:
-            # llm = OpenAI(api_token=api_key)
-            agent = Agent(data)
+            llm = OpenAI(api_token=api_key)
+            pandas_ai = PandasAI(llm)
         except Exception as e:
             st.error(f"An error occurred while initializing the AI: {e}")
             st.stop()
@@ -60,8 +74,10 @@ else:
         # Retrieve documents and generate answer.
         with st.chat_message("assistant"):
             try:
-                answer = agent.chat(prompt)
-                st.write(answer)
+                answer = pandas_ai.run(data, prompt)
+                # Simulate streaming response.
+                for word in response_generator(answer):
+                    st.markdown(word, unsafe_allow_html=False)
 
             except Exception as e:
                 answer = f"An error occurred: {e}"
