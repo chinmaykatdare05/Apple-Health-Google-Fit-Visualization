@@ -3,7 +3,7 @@ import time
 from typing import List, Generator, Tuple
 import numpy as np
 import pandas as pd
-from pandasai import Agent
+from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 
 # Set page configuration
