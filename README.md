@@ -6,7 +6,7 @@ This project provides a streamlined way to analyze and visualize health data exp
 
 You can access the deployed Streamlit app using the following link:
 
-[Apple Health & Google Fit Data Analytics and Visualization](https://chinmaykatdare05-apple-health-google-fit-data-analyt-app-k7gdvs.streamlit.app/)
+[Vitalize](https://vitalize.streamlit.app/)
 
 ## Key Features
 
@@ -16,9 +16,6 @@ You can access the deployed Streamlit app using the following link:
 - **Statistical Analysis:**
   - Aggregates daily, weekly, and monthly trends.
   - Provides correlation analysis between different health parameters.
-- **Interactive Visualizations:**
-  - Various plots, including histograms, scatterplots, heatmaps, bar plots, and more.
-  - Dynamic chart selection using **Streamlit** UI.
 
 ## Getting the Input Files
 
@@ -63,18 +60,6 @@ streamlit run app.py
 1. **Launch the Streamlit app.**
 2. **Upload the exported XML file** from Apple Health.
 3. The tool will automatically parse and process the data.
-4. You’ll see a **data preview** and the option to visualize it.
-
-### Selecting Visualizations
-
-- Choose **attributes** (e.g., Steps, Heart Rate, Calories Burned).
-- Select a **chart type**, such as:
-  - **Histogram**: Distribution of health metrics.
-  - **Boxplot**: Summary statistics and outliers.
-  - **Scatterplot**: Relationship between two attributes.
-  - **Heatmap**: Correlation analysis.
-  - **Lineplot & Barplot**: Trends over time.
-  - **Calendar Heatmap**: Activity across different days.
 
 ### Generating Insights
 
@@ -83,8 +68,6 @@ streamlit run app.py
 
 ## Future Enhancements
 
-- Support for **Google Fit CSV Parsing**.
-- Advanced AI-driven **health insights**.
 - Time-based analysis for deeper trend detection.
 - Integration with **real-time APIs** for live tracking.
 
