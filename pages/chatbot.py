@@ -22,19 +22,19 @@ st.logo(
 )
 
 
-def response_generator(response: str) -> Generator[str, None, None]:
-    """
-    Generator that yields one word at a time from the response, emulating a streaming effect.
+# def response_generator(response: str) -> Generator[str, None, None]:
+#     """
+#     Generator that yields one word at a time from the response, emulating a streaming effect.
 
-    Parameters:
-        response (str): The full response string.
+#     Parameters:
+#         response (str): The full response string.
 
-    Yields:
-        str: The next word in the response, followed by a space.
-    """
-    for word in response.split():
-        yield word + " "
-        time.sleep(0.05)
+#     Yields:
+#         str: The next word in the response, followed by a space.
+#     """
+#     for word in response.split():
+#         yield word + " "
+#         time.sleep(0.05)
 
 
 # Main Streamlit App
@@ -77,7 +77,7 @@ else:
             try:
                 answer = agent.chat(prompt)
                 # Simulate streaming response.
-                st.markdown(response_generator(answer), unsafe_allow_html=False)
+                st.markdown(answer, unsafe_allow_html=False)
 
             except Exception as e:
                 answer = f"An error occurred: {e}"
