@@ -5,4 +5,4 @@ seaborn
 calplot
 plotly
 pandasai
-yaml
+pyyaml

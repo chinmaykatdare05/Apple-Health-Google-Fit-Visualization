@@ -44,8 +44,16 @@ if "data" not in st.session_state:
 else:
     data: pd.DataFrame = st.session_state.get("data", None)
     if data is not None:
-        llm = OpenAI(api_token="your-openai-api-key")
-        pandas_ai = PandasAI(llm)
+        api_key = st.text_input("Enter your OpenAI API key:", type="password")
+        if not api_key:
+            st.warning("Please enter your OpenAI API key to proceed.")
+            st.stop()
+        try:
+            llm = OpenAI(api_token=api_key)
+            pandas_ai = PandasAI(llm)
+        except Exception as e:
+            st.error(f"An error occurred while initializing the AI: {e}")
+            st.stop()
 
     # Initialize chat history if not already present.
     if "messages" not in st.session_state:
@@ -70,7 +78,7 @@ else:
                 # Simulate streaming response.
                 for word in response_generator(answer):
                     st.markdown(word, unsafe_allow_html=False)
-                    
+
             except Exception as e:
                 answer = f"An error occurred: {e}"
                 st.error(answer)
