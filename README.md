@@ -1,4 +1,4 @@
-# Apple Health & Google Fit Data Analytics and Visualization
+# Vitalize
 
 This project provides a streamlined way to analyze and visualize health data exported from **Apple Health** and **Google Fit**. It parses XML data exported from Apple Health, extracts key health metrics, and generates insightful visualizations using **Streamlit**, **Plotly**, **Seaborn**, and **Matplotlib**.
 
