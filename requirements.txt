@@ -1,8 +1,8 @@
+pandasai
 pandas
 numpy
 matplotlib
 seaborn
 calplot
 plotly
-pandasai
 pyyaml

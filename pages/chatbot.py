@@ -3,8 +3,9 @@ import time
 from typing import List, Generator, Tuple
 import numpy as np
 import pandas as pd
-from pandasai import PandasAI
-from pandasai.llm.openai import OpenAI
+from pandasai import Agent
+
+# from pandasai.llm.openai import OpenAI
 
 # Set page configuration
 st.set_page_config(
@@ -49,8 +50,8 @@ else:
             st.warning("Please enter your OpenAI API key to proceed.")
             st.stop()
         try:
-            llm = OpenAI(api_token=api_key)
-            pandas_ai = PandasAI(llm)
+            # llm = OpenAI(api_token=api_key)
+            agent = Agent(data)
         except Exception as e:
             st.error(f"An error occurred while initializing the AI: {e}")
             st.stop()
@@ -74,7 +75,7 @@ else:
         # Retrieve documents and generate answer.
         with st.chat_message("assistant"):
             try:
-                answer = pandas_ai.run(data, prompt)
+                answer = agent.chat(prompt)
                 # Simulate streaming response.
                 for word in response_generator(answer):
                     st.markdown(word, unsafe_allow_html=False)
