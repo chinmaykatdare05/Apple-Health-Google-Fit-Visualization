@@ -1,10 +1,10 @@
 import streamlit as st
 import time
-from typing import List, Generator, Tuple
-import numpy as np
+from typing import Generator
 import pandas as pd
-from pandasai import Agent
+from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
+from pandasai.helpers import SmartDataframe
 
 # Set page configuration
 st.set_page_config(
@@ -49,8 +49,12 @@ else:
             st.warning("Please enter your OpenAI API key to proceed.")
             st.stop()
         try:
-            # llm = OpenAI(api_token=api_key)
-            agent = Agent(data)
+            # Create an OpenAI instance with your API key.
+            llm = OpenAI(api_token=api_key)
+            # Instantiate PandasAI with the LLM.
+            pandas_ai = PandasAI(llm)
+            # Wrap the DataFrame into a SmartDataframe for enhanced processing.
+            smart_df = SmartDataframe(data)
         except Exception as e:
             st.error(f"An error occurred while initializing the AI: {e}")
             st.stop()
@@ -74,8 +78,9 @@ else:
         # Retrieve documents and generate answer.
         with st.chat_message("assistant"):
             try:
-                answer = agent.chat(prompt)
-                # Simulate streaming response.
+                # Run the analysis using PandasAI on the SmartDataframe.
+                answer = pandas_ai.run(smart_df, prompt)
+                # Emulate a streaming response.
                 for word in response_generator(answer):
                     st.markdown(word, unsafe_allow_html=False)
 
