@@ -77,8 +77,7 @@ else:
             try:
                 answer = agent.chat(prompt)
                 # Simulate streaming response.
-                for word in response_generator(answer):
-                    st.markdown(word, unsafe_allow_html=False)
+                st.markdown(response_generator(answer), unsafe_allow_html=False)
 
             except Exception as e:
                 answer = f"An error occurred: {e}"
