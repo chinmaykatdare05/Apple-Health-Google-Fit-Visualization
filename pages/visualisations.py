@@ -20,18 +20,23 @@ st.logo(
 
 def plot_line_chart(df: pd.DataFrame) -> None:
     """
-    Generates a line chart for the selected columns in the DataFrame.
+    Generates a line chart for the selected columns in the DataFrame using Plotly.
     """
     cols = st.multiselect(
         "Select columns to plot", df.columns, default=list(df.columns)[:1]
     )
     if cols:
-        fig, ax = plt.subplots()
-        df[cols].plot(ax=ax)
-        ax.set_title("Line Plot of Health Data")
-        ax.set_xlabel("Date")
-        ax.set_ylabel("Value")
-        st.pyplot(fig)
+        # Reset index to use as a column for plotly if necessary
+        data = df.reset_index()
+        x_col = data.columns[0]  # Assuming the first column is the index or x-axis
+        fig = px.line(
+            data,
+            x=x_col,
+            y=cols,
+            title="Line Plot of Health Data",
+            labels={x_col: "Date", "value": "Value"},
+        )
+        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
     else:
         st.info("Please select at least one column to plot.")
 

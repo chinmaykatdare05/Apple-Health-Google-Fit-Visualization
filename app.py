@@ -64,7 +64,7 @@ def file_upload() -> None:
         if data is not None and not data.empty:
             st.session_state.data = data
             st.divider()
-            st.header("Health Data Metrics")
+            st.header("Health Metrics")
             utils.display_metrics(data)
         else:
             st.warning("⚠️ No valid data found in the file.")
