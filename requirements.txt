@@ -1,8 +1,8 @@
 # pandasai
-pandas
+pandas==2.2.3
 # numpy
 # matplotlib
 # seaborn
 # calplot
-plotly
+plotly==5.24.1
 # pyyaml
