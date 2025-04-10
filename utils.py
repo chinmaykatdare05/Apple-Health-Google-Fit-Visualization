@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import calplot
 
 
 def resample_data(df, freq="D") -> pd.DataFrame:
@@ -99,3 +100,34 @@ def display_metrics(data) -> None:
             safe_percentage_change(avg_hp_30, avg_hp),
             border=True,
         )
+
+
+def plot_calendar_heatmap(data: pd.DataFrame) -> None:
+    """
+    Generates a calendar heatmap for a selected column using calplot.
+    """
+    col = st.selectbox("Select column for Calendar Heatmap", data.columns)
+    if col:
+        if not isinstance(data.index, pd.DatetimeIndex):
+            try:
+                data.index = pd.to_datetime(data.index)
+            except Exception as e:
+                st.error(f"Failed to convert index to DatetimeIndex: {e}")
+                return
+
+        if isinstance(data.index, pd.DatetimeIndex):
+            data = data[col]
+            fig, _ = calplot.calplot(
+                data,
+                cmap="Blues",
+                colorbar=True,
+                suptitle=f"Calendar Heatmap of {col}",
+                figsize=(12, 6),
+            )
+            st.pyplot(fig)
+        else:
+            st.warning(
+                "The DataFrame index must be a DatetimeIndex for a calendar heatmap."
+            )
+    else:
+        st.info("Please select a column for the calendar heatmap.")

@@ -66,6 +66,9 @@ def file_upload() -> None:
             st.divider()
             st.header("Health Metrics")
             utils.display_metrics(data)
+            st.divider()
+            st.header("Calendar Heatmap")
+            utils.plot_calendar_heatmap(data)
         else:
             st.warning("⚠️ No valid data found in the file.")
 
