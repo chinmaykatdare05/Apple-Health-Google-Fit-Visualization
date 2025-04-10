@@ -1,8 +1,8 @@
-pandasai
+# pandasai
 pandas
-numpy
-matplotlib
-seaborn
+# numpy
+# matplotlib
+# seaborn
 calplot
-plotly
-pyyaml
+# plotly
+# pyyaml

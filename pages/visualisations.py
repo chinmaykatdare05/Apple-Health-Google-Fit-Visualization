@@ -1,7 +1,6 @@
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
-import matplotlib.pyplot as plt
 import pandas as pd
 
 st.set_page_config(
@@ -26,9 +25,8 @@ def plot_line_chart(df: pd.DataFrame) -> None:
         "Select columns to plot", df.columns, default=list(df.columns)[:1]
     )
     if cols:
-        # Reset index to use as a column for plotly if necessary
         data = df.reset_index()
-        x_col = data.columns[0]  # Assuming the first column is the index or x-axis
+        x_col = data.columns[0]
         fig = px.line(
             data,
             x=x_col,
