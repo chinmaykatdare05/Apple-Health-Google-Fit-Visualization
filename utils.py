@@ -122,7 +122,7 @@ def plot_calendar_heatmap(data: pd.DataFrame) -> None:
                 cmap="Blues",
                 colorbar=True,
                 suptitle=f"Calendar Heatmap of {col}",
-                figsize=(12, 6),
+                figsize=(8, 6),
             )
             st.pyplot(fig)
         else:
